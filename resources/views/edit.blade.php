@@ -28,7 +28,7 @@
         </div>
         @endif
 
-        <form action="{{ route('users.update', $users->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -37,7 +37,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name:</strong>
-                        <input type="text" name="name" value="{{ $users->name }}" class="form-control" placeholder="Name">
+                        <input type="text" name="name" value="{{ $user->name }}" class="form-control" placeholder="Name">
 
                         @error('name')
                         <div class="alert alert-danger mt-1 mb-1"> {{ $message }} </div>
@@ -49,7 +49,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Email:</strong>
-                        <input type="email" name="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ $user->email }}">
                         @error('email')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
                         @enderror
@@ -60,9 +60,31 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Username:</strong>
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <input type="text" name="username" value="{{ $user->username }}" class="form-control" placeholder="Username" >
                         @error('username')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        @enderror
+                    </div>
+                </div>
+
+                {{-- Password --}}
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Password:</strong>
+                        <input type="password" name="password" class="form-control" placeholder="New Password">
+                        @error('password')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                {{-- Confirm Password --}}
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Confirm Password:</strong>
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm New Password">
+                        @error('password_confirmation')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -71,8 +93,19 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Phone Number:</strong>
-                        <input type="number" name="phone" class="form-control" placeholder="Phone Number">
+                        <input type="number" name="phone" value="{{ $user->phone }}" class="form-control" placeholder="Phone Number">
                         @error('phone')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        @enderror
+                    </div>
+                </div>
+
+                {{-- Company --}}
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Company:</strong>
+                        <input type="text" name="company" value="{{ $user->company }}" class="form-control" placeholder="Company" >
+                        @error('company')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
                         @enderror
                     </div>
@@ -82,7 +115,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Role:</strong>
-                        <input type="text" name="role" class="form-control" placeholder="Role">
+                        <input type="text" name="role" value="{{ $user->role }}" class="form-control" placeholder="Role">
                         @error('role')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
                         @enderror
@@ -93,7 +126,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>DOB:</strong>
-                        <input type="date" name="DOB" class="form-control" placeholder="DOB">
+                        <input type="date" name="DOB" value="{{ $user->DOB }}" class="form-control" placeholder="DOB">
                         @error('DOB')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
                         @enderror

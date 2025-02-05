@@ -1,4 +1,6 @@
-<!DOCTYPE html>html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,6 +67,28 @@
                     </div>
                 </div>
 
+                {{-- Password --}}
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Password (6 chars minimum):</strong>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        @error('password')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        @enderror
+                    </div>
+                </div>
+
+                {{-- Confirm Password --}}
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Confirm Password:</strong>
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
+                        @error('password_confirmation')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        @enderror
+                    </div>
+                </div>
+
                 {{-- Phone Number --}}
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -76,11 +100,35 @@
                     </div>
                 </div>
 
+                {{-- Company --}}
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Company:</strong>
+                        <input type="text" name="company" class="form-control" placeholder="Company">
+                        @error('company')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        @enderror
+                    </div>
+                </div>
+
                 {{-- Role --}}
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Role:</strong>
-                        <input type="text" name="role" class="form-control" placeholder="Role">
+                        <br>
+
+                        {{-- Normal User --}}
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="roleNormal" value="Normal user">
+                            <label class="form-check-label" for="roleNormal">Normal User</label>
+                        </div>
+
+                        {{-- Admin --}}
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="Admin" value="Admin">
+                            <label class="form-check-label" for="Admin">Admin</label>
+                        </div>
+
                         @error('role')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
                         @enderror
