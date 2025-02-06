@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -23,14 +24,13 @@ class LoginController extends Controller
         if (Auth::attempt($credentials))
         {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('home');
         }
 
         return back()->withErrors
         ([
             'email' => 'Your email or password is wrong',
         ])->onlyInput('email');
-
     }
 
     public function logout(Request $request)

@@ -9,6 +9,7 @@
 </head>
 
 <body class="d-flex align-items-center justify-content-center vh-100">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <div class="card shadow-sm p-4" style="width: 22rem;">
         <h1 class="text-center mb-4">Login</h1>
 

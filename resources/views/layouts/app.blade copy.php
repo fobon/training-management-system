@@ -17,23 +17,20 @@
             <nav class="mt-3">
                 <ul class="list-unstyled">
                     <li class="px-3 py-2 hover-bg-gray">
-                        <a href="/dashboard/training-management-system/public/home" class="text-decoration-none text-dark">Home</a>
-                    </li>
-                    <li class="px-3 py-2 hover-bg-gray">
-                        <a href="/dashboard/training-management-system/public/home/dashboard" class="text-decoration-none text-dark">Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="text-decoration-none text-dark">Dashboard</a>
                     </li>
                     <li class="px-3 py-2 hover-bg-gray">
                         <a href="{{ route('users.index') }}" class="text-decoration-none text-dark">Users</a>
                     </li>
-                    {{-- <li class="px-3 py-2 hover-bg-gray">
+                    <!-- {{-- <li class="px-3 py-2 hover-bg-gray">
                         <a href="{{ route('companies.index') }}" class="text-decoration-none text-dark">Companies</a>
-                    </li> --}}
+                    </li>
                     <li class="px-3 py-2 hover-bg-gray">
                         <a href="{{ route('banners.index') }}" class="text-decoration-none text-dark">Banners</a>
                     </li>
-                    {{-- <li class="px-3 py-2 hover-bg-gray">
+                    <li class="px-3 py-2 hover-bg-gray">
                         <a href="{{ route('manualbook.index') }}" class="text-decoration-none text-dark">Manual Book</a>
-                    </li> --}}
+                    </li> --}} -->
 
                     <li class="px-3 py-2 hover-bg-gray">
                         <form action="{{ route('logout') }}" method="POST">
@@ -52,12 +49,12 @@
             <header class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="h4 fw-semibold">@yield('title', 'Dashboard')</h2>
 
-                {{-- <form action="{{ route('logout') }}" method="POST">
+                <!-- {{-- <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-secondary">
                         Logout
                     </button>
-                </form> --}}
+                </form> --}} -->
 
             </header>
             @yield('content')

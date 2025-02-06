@@ -16,6 +16,11 @@
             <div class="pull-right mb-2">
                 <a class="btn btn-success" href ="{{ route('users.create') }}"> Create User</a>
             </div>
+
+            <div class="pull-right mb-2">
+                <a class="btn" href="./">Home</a>
+            </div>
+
         </div>
 
 

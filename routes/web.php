@@ -1,17 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-
-use App\Http\Controllers\HomeController;
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-use App\Http\Controllers\UserController;
-Route::resource('/home/users', UserController::class);
-
-use App\Http\Controllers\DashboardController;
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,14 +11,43 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 |
 */
 
+use Illuminate\Support\Facades\Route;
 
-
+use App\Http\Controllers\Auth\LoginController;
 Route::get('/', function () {
-    return view('welcome', ['title' => 'Home']);
-})->name('welcome');
+    return redirect()->route('login');
+})->name('home');
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+use App\Http\Controllers\HomeController;
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+use App\Http\Controllers\UserController;
+Route::resource('/home/users', UserController::class);
+
+use App\Http\Controllers\DashboardController;
+Route::get('home/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+use App\Http\Controllers\BannerController;
+Route::middleware(['auth'])->group(function() {
+    Route::get('/banners', [BannerController::class, 'index'])->name('banners.index');
+    Route::get('/banners/create', [BannerController::class, 'create'])->name('banners.create');
+    Route::post('/banners', [BannerController::class, 'store'])->name('banners.store');
+    Route::get('/banners/{banner}/edit', [BannerController::class, 'edit'])->name('banners.edit');
+    Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banners.update');
+    Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
+});
 
 Route::get('/home', function () {
     return view('home');
+});
+
+Route::get('/frontendtest', function () {
+    return view('frontendtest');
 });
 
 Route::get('/home/users/index', function () {
@@ -44,11 +61,3 @@ Route::get('/home/users/index/create', function () {
 Route::get('/home/users/index/edit', function () {
     return view('edit');
 });
-
-
-
-// Route::get('login', [UserController::class, 'login'])->name('login');
-// Route::post('login', [UserController::class, 'login_action'])->name('login.action');
-// Route::get('password', [UserController::class, 'password'])->name('password');
-// Route::post('password', [UserController::class, 'password_action'])->name('password.action');
-// Route::get('logout', [UserController::class, 'logout'])->name('logout');
