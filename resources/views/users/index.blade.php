@@ -18,15 +18,16 @@
         </div>
 
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-                <p>{{ $message }}</p>
-        </div>
-    @endif
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+            </div>
+        @endif
 
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Image</th>
                 <th>Username</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -41,6 +42,7 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr>
+                        <td><img src="{{ asset('storage/' . $user->image)  }}" width="100"></td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
@@ -59,8 +61,8 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
-        {!! $users->links() !!}
+    </table>
+    {!! $users->links() !!}
     </div>
 @endsection
 

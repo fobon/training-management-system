@@ -12,13 +12,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $latestbanners = Banner::latest()->take(3)->get();
+        $latestBanners = Banner::latest()->take(3)->get();
         $totalBanners = Banner::count();
         $totalUsers = User::count();
         $totalCompanies = Company::count();
 
         // Upcoming Birthdays
-        $upcomingBirthdays = User::whereNotNull('date_of_birth')
+        $upcomingBirthdays = User::whereNotNull('DOB')
             ->get()
             ->filter(function ($user) {
                 $DOB = Carbon::parse($user->DOB);
@@ -28,7 +28,7 @@ class DashboardController extends Controller
                 }
                 return $dobThisYear->diffInDays(Carbon::now()) <= 30;
             })
-            ->sortBy('date_of_birth');
+            ->sortBy('DOB');
 
         return view('dashboard.index', compact('latestBanners', 'totalBanners', 'totalUsers', 'totalCompanies', 'upcomingBirthdays'));
     }

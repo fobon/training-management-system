@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('role', 255);
             $table->date('DOB');
             $table->rememberToken();
+            $table->string('image');
             $table->timestamps();
         });
     }

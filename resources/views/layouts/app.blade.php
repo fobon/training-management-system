@@ -25,9 +25,9 @@
                     <li class="px-3 py-2 hover-bg-gray">
                         <a href="{{ route('users.index') }}" class="text-decoration-none text-dark">Users</a>
                     </li>
-                    {{-- <li class="px-3 py-2 hover-bg-gray">
+                    <li class="px-3 py-2 hover-bg-gray">
                         <a href="{{ route('companies.index') }}" class="text-decoration-none text-dark">Companies</a>
-                    </li> --}}
+                    </li>
                     <li class="px-3 py-2 hover-bg-gray">
                         <a href="{{ route('banners.index') }}" class="text-decoration-none text-dark">Banners</a>
                     </li>

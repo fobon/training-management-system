@@ -45,7 +45,7 @@ class BannerController extends Controller
         return view('banners.edit', compact('banner'));
     }
 
-    public function update(Request $requrest, Banner $banner)
+    public function update(Request $request, Banner $banner)
     {
         $request->validate
         ([

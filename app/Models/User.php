@@ -47,6 +47,7 @@ class User extends Authenticatable
                 'role',
                 'DOB',
                 'password',
+                'image',
 
             ];
 

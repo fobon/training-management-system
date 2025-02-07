@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
 @section('content')
 <div class="p-6">
-    <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+    {{-- <h1 class="text-2xl font-bold mb-4">Dashboard</h1> --}}
 
     <!-- Summary Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -27,11 +29,12 @@
             @foreach ($latestBanners as $banner)
                 <li class="flex justify-between items-center py-2 border-b">
                     <div>
-                        <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->link }}" target="_blank" class="text-blue-500">View</a>
+                        <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->image }}"></a>
+                        <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
                     </div>
                     <div>
                         <a href="{{ route('banners.edit', $banner->id) }}" class="text-yellow-500 mr-2">Edit</a>
-                        <form action="{{ route('banners.delete', $banner->id) }}" method="POST" class="inline">
+                        <form action="{{ route('banners.destroy', $banner->id) }}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500">Delete</button>

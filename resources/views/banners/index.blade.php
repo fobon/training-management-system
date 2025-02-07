@@ -13,7 +13,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Link</th>
+                    {{-- <th>Link</th> --}}
                     <th>Image</th>
                     <th>Actions</th>
                 </tr>
@@ -22,10 +22,10 @@
             @foreach ($banners as $banner)
             <tr>
                 <td>{{  $banner->name  }}</td>
-                <td><a href="{{  $banner->link  }}" target="_blank">View</a></td>
+                {{-- <td><a href="{{  $banner->link  }}" target="_blank">View</a></td> --}}
                 <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
                 <td>
-                    <a href="{{  route('banners.edit', $banners->id)  }}" class="btn btn-secondary">Edit</a>
+                    <a href="{{  route('banners.edit', $banner->id)  }}" class="btn btn-secondary">Edit</a>
                     <form action="{{  route('banners.destroy', $banner->id)  }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')

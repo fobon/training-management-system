@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserController extends Controller
 {
@@ -48,10 +50,14 @@ class UserController extends Controller
             'role' => 'required',
             'DOB' => 'required|date',
             'password' => 'required|confirmed|min:6',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
 
+        $imagePath = $request->file('image')->store('users', 'public');
+
         // User::create($request->post());
-        User::create([
+        User::create
+        ([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -60,6 +66,7 @@ class UserController extends Controller
             'role' => $request->role,
             'DOB' => $request->DOB,
             'password' => bcrypt($request->password), // hashing
+            'image' => $imagePath,
         ]);
 
         return redirect()->route('users.index')->with('success','User has been created successfully.');
@@ -105,12 +112,20 @@ class UserController extends Controller
             'role' => 'required',
             'DOB' => 'required',
             'password' => 'nullable|confirmed|min:6',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
         $user->fill($request->except('password'));
 
         if($request->filled('password')) {
             $user->password = bcrypt($request->passsword);
+        }
+
+        if($request->hasFile('image'))
+        {
+            Storage::disk('public')->delete($user->image);
+            $imagePath = $request->file('image')->store('users', 'public');
+            $user->image = $imagePath;
         }
 
         $user->save();
@@ -126,6 +141,7 @@ class UserController extends Controller
     */
     public function destroy(User $user)
     {
+        Storage::disk('public')->delete($user->image);
         $user->delete();
         return redirect()->route('users.index')->with('success','User has been deleted successfully');
     }

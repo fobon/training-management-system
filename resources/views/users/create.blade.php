@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add User Form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
 </head>
 
 <body>
@@ -20,7 +21,7 @@
                 </div>
 
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('users.index') }}">Back</a>
                 </div>
             </div>
         </div>
@@ -35,6 +36,12 @@
             @csrf
 
             <div class="row">
+
+                {{-- Banner Image (10 MB Max) --}}
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload Image (Max 10 MB)</label>
+                    <input type="file" name="image" id="image" class="form-control" required>
+                </div>
 
                 {{-- Name --}}
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -148,7 +155,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary ml-3">Submit</button>
+                <button type="submit" class="btn btn-primary ml-3">Create</button>
             </div>
         </form>
     </div>

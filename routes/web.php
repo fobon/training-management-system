@@ -26,10 +26,10 @@ use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 use App\Http\Controllers\UserController;
-Route::resource('/home/users', UserController::class);
+Route::resource('/users', UserController::class);
 
 use App\Http\Controllers\DashboardController;
-Route::get('home/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/home/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 use App\Http\Controllers\BannerController;
@@ -42,22 +42,22 @@ Route::middleware(['auth'])->group(function() {
     Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
 });
 
-Route::get('/home', function () {
-    return view('home');
+use App\Http\Controllers\CompanyController;
+// Route::resource('companies', CompanyController::Class);
+Route::middleware(['auth'])->group(function(){
+    Route::get('/company', [CompanyController::class, 'index'])->name('companies.index');
+    Route::get('/company/create', [CompanyController::class, 'create'])->name('companies.create');
+    Route::post('/company', [CompanyController::class, 'store'])->name('companies.store');
+    Route::get('/company/{company}/edit', [CompanyController::class, 'edit'])->name('companies.edit');
+    Route::put('/company/{company}', [CompanyController::class, 'update'])->name('companies.update');
+    Route::delete('/company/{company}', [CompanyController::class, 'destroy'])->name('companies.destroy');
 });
 
-Route::get('/frontendtest', function () {
-    return view('frontendtest');
-});
 
-Route::get('/home/users/index', function () {
-    return view('index');
-});
 
-Route::get('/home/users/index/create', function () {
-    return view('create');
-});
+Route::get('/home', function () {return view('home'); });
+Route::get('/home/users/index', function () { return view('users.index'); });
+Route::get('/home/users/index/create', function () {return view('users.create'); });
+Route::get('/home/users/index/edit', function () {return view('users.edit'); });
 
-Route::get('/home/users/index/edit', function () {
-    return view('edit');
-});
+Route::get('/frontendtest', function () { return view('frontendtest'); });
