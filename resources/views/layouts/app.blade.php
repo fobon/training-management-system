@@ -31,9 +31,9 @@
                     <li class="px-3 py-2 hover-bg-gray">
                         <a href="{{ route('banners.index') }}" class="text-decoration-none text-dark">Banners</a>
                     </li>
-                    {{-- <li class="px-3 py-2 hover-bg-gray">
-                        <a href="{{ route('manualbook.index') }}" class="text-decoration-none text-dark">Manual Book</a>
-                    </li> --}}
+                    <li class="px-3 py-2 hover-bg-gray">
+                        <a href="{{ route('manualbooks.index') }}" class="text-decoration-none text-dark">Manual Book</a>
+                    </li>
 
                     <li class="px-3 py-2 hover-bg-gray">
                         <form action="{{ route('logout') }}" method="POST">

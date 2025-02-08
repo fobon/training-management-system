@@ -45,12 +45,12 @@ Route::middleware(['auth'])->group(function() {
 use App\Http\Controllers\CompanyController;
 // Route::resource('companies', CompanyController::Class);
 Route::middleware(['auth'])->group(function(){
-    Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
-    Route::get('/companies/create', [CompanyController::class, 'create'])->name('companies.create');
-    Route::post('/companies', [CompanyController::class, 'store'])->name('companies.store');
-    Route::get('/companies/{company}/edit', [CompanyController::class, 'edit'])->name('companies.edit');
-    Route::put('/companies/{company}', [CompanyController::class, 'update'])->name('companies.update');
-    Route::delete('/companies/{company}', [CompanyController::class, 'destroy'])->name('companies.destroy');
+    Route::get('/company', [CompanyController::class, 'index'])->name('companies.index');
+    Route::get('/company/create', [CompanyController::class, 'create'])->name('companies.create');
+    Route::post('/company', [CompanyController::class, 'store'])->name('companies.store');
+    Route::get('/company/{company}/edit', [CompanyController::class, 'edit'])->name('companies.edit');
+    Route::put('/company/{company}', [CompanyController::class, 'update'])->name('companies.update');
+    Route::delete('/company/{company}', [CompanyController::class, 'destroy'])->name('companies.destroy');
 });
 
 use App\Http\Controllers\ManualBookController;
@@ -59,10 +59,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/manualbooks', [ManualbookController::class, 'index'])->name('manualbooks.index');
     Route::get('/manualbooks/create', [ManualbookController::class, 'create'])->name('manualbooks.create');
     Route::post('/manualbooks', [ManualbookController::class, 'store'])->name('manualbooks.store');
-    Route::get('/manualbooks/{manualbook}/details', [ManualbookController::class, 'details'])->name('manualbooks.details');
-    Route::get('/manualbooks/{manualbook}/edit', [ManualbookController::class, 'edit'])->name('manualbooks.edit');
-    Route::put('/manualbooks/{manualbook}', [ManualbookController::class, 'update'])->name('manualbooks.update');
-    Route::delete('/manualbooks/{manualbook}', [ManualbookController::class, 'destroy'])->name('manualbooks.destroy');
+    Route::get('/manualbooks/{manualbooks}/edit', [ManualbookController::class, 'edit'])->name('manualbooks.edit');
+    Route::put('/manualbooks/{manualbooks}', [ManualbookController::class, 'update'])->name('manualbooks.update');
+    Route::delete('/manualbooks/{manualbooks}', [ManualbookController::class, 'destroy'])->name('manualbooks.destroy');
 });
 
 Route::get('/home', function () {return view('home'); });

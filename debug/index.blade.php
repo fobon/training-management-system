@@ -2,37 +2,37 @@
 
 @extends('layouts.app')
 
-@section('title', '')
+@section('title', 'Manualbook Index')
 
 @section('content')
     <div class="container mt-2">
         <div class="row">
-            <h2>Company Index</h2>
+            <h2>Manualbook Data</h2>
         </div>
 
         <div class="pull-right mb-2">
-            <a class="btn btn-primary" href="{{ route('companies.create')  }}">Add Company</a>
+            <a class="btn btn-primary" href="{{ route('manualbooks.create')  }}">Add Manualbook</a>
         </div>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Company Name</th>
-                    <th>Company Code</th>
-                    <th>Address</th>
+                    <th>Event Name</th>
+                    <th>Event Details</th>
+                    <th>Event Date</th>
                     <th width="280px">Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                @foreach($companies as $company)
+                @foreach($manualbooks as $manualbook)
                 <tr>
-                    <td>{{ $company->name }}</td>
-                    <td>{{ $company->code }}</td>
-                    <td>{{ $company->address}} </td>
+                    <td>{{ $manualbook->name }}</td>
+                    <td>{{ $manualbook->detail }}</td>
+                    <td>{{ $manualbook->date}} </td>
                     <td>
-                        <form action="{{ route('companies.destroy', $company->id) }}" method="POST">
-                            <a class="btn btn-secondary" href={{ route('companies.edit', $company->id) }}>Edit</a>
+                        <form action="{{ route('manualbooks.destroy', $manualbook->id) }}" method="Post">
+                            <a class="btn btn-secondary" href={{ route('manualbooks.edit', $manualbook->id) }}>Edit</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

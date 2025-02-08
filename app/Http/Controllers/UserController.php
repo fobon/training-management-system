@@ -28,6 +28,7 @@ class UserController extends Controller
     */
     public function create()
     {
+        // $companies = Company::all();
         return view('users.create');
     }
 
@@ -47,12 +48,15 @@ class UserController extends Controller
             'phone' => 'required',
             'username' => 'required|unique:users,username',
             'company' => 'required',
+            // 'company' => 'required|exists:companies,code',
             'role' => 'required',
             'DOB' => 'required|date',
             'password' => 'required|confirmed|min:6',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
+            // 'company_code' => 'required|exists:companies,companycode',
         ]);
 
+        // $company = Company::where($company->code, $request->company)->firstOrFail();
         $imagePath = $request->file('image')->store('users', 'public');
 
         // User::create($request->post());
@@ -67,6 +71,7 @@ class UserController extends Controller
             'DOB' => $request->DOB,
             'password' => bcrypt($request->password), // hashing
             'image' => $imagePath,
+            // 'company_id' => $company->code,
         ]);
 
         return redirect()->route('users.index')->with('success','User has been created successfully.');
@@ -145,5 +150,6 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('success','User has been deleted successfully');
     }
+
 
 }

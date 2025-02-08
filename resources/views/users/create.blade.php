@@ -8,15 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add User Form</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     <div class="container mt-2">
         <div class="row">
             <div class="col-lg 12 margin-tb">
-                <div class="pull-left mb-2">
+                <div class="pull-lift mb-2">
                     <h2>Add User</h2>
                 </div>
 
@@ -44,84 +45,115 @@
                 </div>
 
                 {{-- Name --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>Name:</strong>
                         <input type="text" name="name" class="form-control" placeholder="Name">
                         @error('name')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
                 {{-- Email --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>Email:</strong>
                         <input type="email" name="email" class="form-control" placeholder="Email">
                         @error('email')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
                 {{-- Username --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>Username:</strong>
                         <input type="text" name="username" class="form-control" placeholder="Username">
                         @error('username')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
                 {{-- Password --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>Password (6 chars minimum):</strong>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                         @error('password')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
                 {{-- Confirm Password --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>Confirm Password:</strong>
                         <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                         @error('password_confirmation')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
                 {{-- Phone Number --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>Phone Number:</strong>
                         <input type="number" name="phone" class="form-control" placeholder="Phone Number">
                         @error('phone')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
                 {{-- Company --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>Company:</strong>
                         <input type="text" name="company" class="form-control" placeholder="Company">
                         @error('company')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
+                    {{-- <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="companyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Company
+                        </button>
+
+
+                        <ul class="dropdown-menu" aria-labelledby="companyDropdown">
+                            @foreach($companies as $company)
+                                <li><a class="dropdown-item" href="#" data-value="{{$company->companycode}}">{{  $company->name  }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <input type="hidden" name="company" id="selectedCompany" value="">
+                    <input type="hidden" name="company_code" id="selectedCompanyCode" value="">
+                    @error('company')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+
+                    <script>
+                        document.querySelectorAll('.dropdown-item').forEach(item =>{
+                            item.addEventListener('click', function())
+                            {
+                                const value = this.getAttribute('data-value');
+                                const text = this.innerText;
+                                document.getElementById('selectedCompany').value = value;
+                                document.querySelector('.dropdown-toggle').innerText = text;
+                                document.getElementById('selectedCompanyCode').value = value;
+                            }
+                        });
+                    </script> --}}
                 </div>
 
                 {{-- Role --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>Role:</strong>
                         <br>
@@ -139,23 +171,23 @@
                         </div>
 
                         @error('role')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
                 {{-- DOB --}}
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="mb-3">
                     <div class="form-group">
                         <strong>DOB:</strong>
                         <input type="date" name="DOB" class="form-control" placeholder="DOB">
                         @error('DOB')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary ml-3">Create</button>
+                <button type="submit" class="btn btn-primary">Create</button>
             </div>
         </form>
     </div>
