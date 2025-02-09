@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit Banner</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>body {background-color : #DDD0C8 ; }</style>
 </head>
 
 <body>
@@ -53,17 +54,6 @@
                 <label for="image" class="form-label">Banner Image(Max 10MB - Leave empty if no changes)</label>
                 <input type="file" name="image" id="image" class="form-control">
             </div>
-
-
-            {{-- Preview Current Image --}}
-            {{-- <div class="mb-3">
-                <label class="form-label">Current Image</label>
-                @if ($banner->image_url)
-                <img src = {{ $banner->image_url }} alt="Banner Image" class="img-thumbnail" style ="max-width: 200px;">
-                @else
-                <p>No image uploaded.</p>
-                @endif
-            </div> --}}
 
             <button type="submit" class="btn btn-primary ml-3">Update</button>
         </form>

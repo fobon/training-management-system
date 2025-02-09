@@ -23,7 +23,7 @@
                         <div class="card" style="width: 100%;">
                             <div class="card-body">
                                 <h5 class="card-name">{{ $manualbook->name }}</h5>
-                                <p class="card-date">Created at : {{ $manualbook->created_at }}</p>
+                                <p class="card-date">Created at : {{ $manualbook->created_at }}</p><br>
                                 <form action="{{ route('manualbooks.destroy', $manualbook->id) }}" method="POST">
                                     <a class="btn btn-primary" href="{{ route('manualbooks.details', $manualbook->id) }}">Details</a>
                                     <a class="btn btn-secondary" href="{{ route('manualbooks.edit', $manualbook->id) }}">Edit</a>

@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ManualbookController;
+use App\Http\Controllers\RickAndMortyController;
 
 // Redirect to login
 Route::get('/', function () {
@@ -73,3 +74,6 @@ Route::resource('/users', UserController::class);
 Route::get('/frontendtest', function () { return view('frontendtest'); });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+// API
+Route::get('/rickandmorty', [RickAndMortyController::class, 'index'])->name('rickandmorty');

@@ -8,10 +8,9 @@
     {
         position: relative;
         max-width: 1000px;
-        max-height: 700px;
+        max-height: 700px; /* Set fixed height */
         margin: auto;
         overflow: hidden;
-        border: red;
     }
 
     /* .mySlides
@@ -25,7 +24,7 @@
     {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: cover; /* Ensures the image fills the container */
     }
 
     .mySlides.show
@@ -62,7 +61,7 @@
     }
 
     .text {
-        color: #ffffff;
+        color: #f2f2f2;
         font-size: 15px;
         padding: 8px 12px;
         position: absolute;
@@ -108,16 +107,10 @@
         to {opacity: 1}
     }
 
-    .index
-    {
-        position: absolute;
-
-    }
-
 </style>
 
-<body >
-    <h1 >
+<body class="index">
+    <h1>
         Latest Banners
     </h1>
 
@@ -139,7 +132,7 @@
     <br>
 
     <!-- The dots/circles -->
-    <div style="text-align: center">
+    <div style="text-align:center">
         @foreach ($latestBanners as $index => $banner)
             <span class="dot" onclick="currentSlide({{ $index + 1 }})"></span>
         @endforeach
@@ -191,7 +184,7 @@
 </body>
 
 
-<div class="table p-2">
+<div class="p-6">
     {{-- <h1 class="text-2xl font-bold mb-4">Dashboard</h1> --}}
 
     <!-- Summary Cards -->
@@ -211,7 +204,7 @@
     </div>
 
     <!-- Latest Banners -->
-    <div class="bg-white shadow-md p-4 rounded-lg mb-6">
+    {{-- <div class="bg-white shadow-md p-4 rounded-lg mb-6">
         <h2 class="text-xl font-semibold mb-3">Latest Banners</h2>
         <ul>
             @foreach ($latestBanners as $banner)
@@ -223,7 +216,7 @@
                 </li>
             @endforeach
         </ul>
-    </div>
+    </div> --}}
 
     <!-- Upcoming Birthdays -->
     <div class="bg-white shadow-md p-4 rounded-lg">
@@ -231,7 +224,7 @@
         <ul>
             @forelse ($upcomingBirthdays as $user)
                 <li class="py-2 border-b">
-                    {{ $user->name }} <br>Birthday on {{ \Carbon\Carbon::parse($user->DOB)->format('F d') }}
+                    {{ $user->name }} - {{ \Carbon\Carbon::parse($user->date_of_birth)->format('F d') }}
                 </li>
             @empty
                 <li>No upcoming birthdays.</li>
