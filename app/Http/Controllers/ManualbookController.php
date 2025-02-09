@@ -20,6 +20,12 @@ class ManualbookController extends Controller
         return view('manualbooks.index', compact('manualbooks'));
     }
 
+    public function normalManualbook()
+    {
+        $manualbooks = ManualBook::latest()->get();
+        return view('normaluser.normalmanualbook', compact('manualbooks'));
+    }
+        
     /**
      * Show the form for creating a new resource.
      *

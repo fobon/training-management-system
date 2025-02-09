@@ -33,6 +33,29 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('latestBanners', 'totalBanners', 'totalUsers', 'totalCompanies', 'upcomingBirthdays'));
     }
 
+    public function normalDashboard()
+    {
+        $latestBanners = Banner::latest()->take(3)->get();
+        $totalBanners = Banner::count();
+        $totalUsers = User::count();
+        $totalCompanies = Company::count();
+
+        // Upcoming Birthdays
+        $upcomingBirthdays = User::whereNotNull('DOB')
+            ->get()
+            ->filter(function ($user) {
+                $DOB = Carbon::parse($user->DOB);
+                $dobThisYear = $DOB->copy()->year(Carbon::now()->year);
+                if($dobThisYear->isPast()){
+                    $dobThisYear->addYear();
+                }
+                return $dobThisYear->diffInDays(Carbon::now()) <= 30;
+            })
+            ->sortBy('DOB');
+
+        return view('normaluser.normaldashboard', compact('latestBanners', 'totalBanners', 'totalUsers', 'totalCompanies', 'upcomingBirthdays'));
+    }
+
     public function deleteBanner($id) {
         $banner = Banner::findOrFail($id);
         $banner->delete();

@@ -28,9 +28,20 @@
                         <br><br>
                     </div>
 
-                <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('manualbooks.index')}}">Back</a>
-                </div>
+
+                {{-- <div class="pull-right">
+                       <a class="btn btn-primary" href="{{ route('manualbooks.index')}}">Back</a>
+                </div> --}}
+
+                @if (Auth::user()->role == 'Admin')
+                    <div class="pull-right">
+                        <a class="btn btn-primary" href="{{ route('manualbooks.index')}}">Back</a>
+                    </div>
+                @else
+                    <div class="pull-right">
+                        <a class="btn btn-primary" href="{{ route('normalmanualbook')}}">Back</a>
+                    </div>
+                @endif
             </div>
         </div>
 

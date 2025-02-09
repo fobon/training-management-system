@@ -1,6 +1,6 @@
 {{-- Manualbook Index --}}
 
-@extends('layouts.app')
+@extends('layouts.normalapp')
 
 @section('title', '')
 
@@ -9,11 +9,6 @@
     <div class="container mt-2">
         <div class="row">
             <h2>Manualbook Index</h2>
-        </div><br>
-
-
-        <div class="pull-right mb-2">
-            <a class="btn btn-primary" href="{{ route('manualbooks.create')  }}">Add Manualbook</a>
         </div><br>
 
         <div class="container mt-2">
@@ -26,10 +21,7 @@
                                 <p class="card-date">Created at : {{ $manualbook->created_at }}</p>
                                 <form action="{{ route('manualbooks.destroy', $manualbook->id) }}" method="POST">
                                     <a class="btn btn-primary" href="{{ route('manualbooks.details', $manualbook->id) }}">Details</a>
-                                    <a class="btn btn-secondary" href="{{ route('manualbooks.edit', $manualbook->id) }}">Edit</a>
                                     @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </div>
                         </div>

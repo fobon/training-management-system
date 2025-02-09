@@ -36,6 +36,8 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
+    const ROLE_ADMIN = 'Admin';
+    const ROLE_NORMAL_USER = 'Normal user';
 
     protected $fillable =
     [
@@ -62,6 +64,16 @@ class User extends Authenticatable
     [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role === 'Admin';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'Normal user';
+    }
 
     public function company()
     {

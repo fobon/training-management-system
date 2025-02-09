@@ -1,34 +1,53 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\NormalhomeController;
-use App\Http\Controllers\NormaldashboardController;
-use App\Http\Controllers\NormalmanualbookController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\BannerController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\ManualbookController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-// Redirect to login
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Auth\LoginController;
 Route::get('/', function () {
     return redirect()->route('login');
-})->name('home.redirect');
+})->name('home');
 
-// Authentication routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Home and dashboard route
-Route::middleware(['auth'])->group(function() {
-Route::get('/home', function() { return view('/home'); })->name('home');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+use App\Http\Controllers\HomeController;
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', function()
+{
+    if  (auth()->user()->role == 'Admin'){
+        return view('/home');
+    } else
+    {
+        return redirect()->route('normalhome');
+    }
+})->name('home');
+
+Route::middleware(['role:Normal user'])->group(function() {
+    Route::get('/normalhome', [NormalhomeController::class, 'normalhome'])->name('normalhome');
+    Route::get('/normaldashboard', [NormaldashboardController::class, 'index'])->name('normaldashboards.index');
+    Route::get('/normalmanualbooks', [NormalmanualbookController::class], 'index')->name('normalmanualbooks.index');
 });
 
-// Banner routes
+use App\Http\Controllers\UserController;
+Route::resource('/users', UserController::class);
+
+use App\Http\Controllers\DashboardController;
+Route::get('/home/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+use App\Http\Controllers\BannerController;
 Route::middleware(['auth'])->group(function() {
     Route::get('/banners', [BannerController::class, 'index'])->name('banners.index');
     Route::get('/banners/create', [BannerController::class, 'create'])->name('banners.create');
@@ -38,7 +57,8 @@ Route::middleware(['auth'])->group(function() {
     Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
 });
 
-// Company routes
+use App\Http\Controllers\CompanyController;
+// Route::resource('companies', CompanyController::Class);
 Route::middleware(['auth'])->group(function(){
     Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
     Route::get('/companies/create', [CompanyController::class, 'create'])->name('companies.create');
@@ -48,7 +68,8 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/companies/{company}', [CompanyController::class, 'destroy'])->name('companies.destroy');
 });
 
-// Manualbook routes
+use App\Http\Controllers\ManualBookController;
+// Route::resource('/home/manualbooks', ManualbookController::class);
 Route::middleware(['auth'])->group(function(){
     Route::get('/manualbooks', [ManualbookController::class, 'index'])->name('manualbooks.index');
     Route::get('/manualbooks/create', [ManualbookController::class, 'create'])->name('manualbooks.create');
@@ -59,17 +80,10 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/manualbooks/{manualbook}', [ManualbookController::class, 'destroy'])->name('manualbooks.destroy');
 });
 
-// Route::get('/normalhome', function() { return view('/normalhome'); })->name('normalhome');
-Route::middleware(['auth', 'normal.user'])->group(function () {
-Route::get('/normalhome', [NormalhomeController::class, 'index'])->name('normalhome');
-Route::get('/normaldashboard', [NormaldashboardController::class, 'index'])->name('normaldashboard');
-Route::get('/normalmanualbook', [NormalmanualbookController::class, 'index'])->name('normalmanualbook');
-});
+Route::get('/home', function () {return view('home'); });
+Route::get('/home/users/index', function () { return view('users.index'); });
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 
-// Resource routes for users
-Route::resource('/users', UserController::class);
-
-// Additional routes
 Route::get('/frontendtest', function () { return view('frontendtest'); });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+

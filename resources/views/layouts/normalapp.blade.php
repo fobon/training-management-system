@@ -12,27 +12,19 @@
         <!-- Sidebar -->
         <aside class="w-25 bg-white shadow-sm">
             <div class="p-3 text-center border-bottom">
-                <h1 class="h5 fw-bold">Admin CRUD Laravel</h1>
+                <h1 class="h5 fw-bold">User CRUD Laravel</h1>
             </div>
             <nav class="mt-3">
                 <ul class="list-unstyled">
                     <li class="px-3 py-2 hover-bg-gray">
-                        <a href="/dashboard/training-management-system/public/home" class="text-decoration-none text-dark">Home</a>
+                        <a href="/dashboard/training-management-system/public/normalhome" class="text-decoration-none text-dark">Home</a>
                     </li>
                     <li class="px-3 py-2 hover-bg-gray">
-                        <a href="/dashboard/training-management-system/public/dashboard" class="text-decoration-none text-dark">Dashboard</a>
+                        <a href="/dashboard/training-management-system/public/normaldashboard" class="text-decoration-none text-dark">Dashboard</a>
                     </li>
                     <li class="px-3 py-2 hover-bg-gray">
-                        <a href="{{ route('users.index') }}" class="text-decoration-none text-dark">Users</a>
-                    </li>
-                    <li class="px-3 py-2 hover-bg-gray">
-                        <a href="{{ route('companies.index') }}" class="text-decoration-none text-dark">Companies</a>
-                    </li>
-                    <li class="px-3 py-2 hover-bg-gray">
-                        <a href="{{ route('banners.index') }}" class="text-decoration-none text-dark">Banners</a>
-                    </li>
-                    <li class="px-3 py-2 hover-bg-gray">
-                        <a href="{{ route('manualbooks.index') }}" class="text-decoration-none text-dark">Manual Book</a>
+                        {{-- <a href="{{ route('normalmanualbooks.index') }}" class="text-decoration-none text-dark">Manual Book</a> --}}
+                        <a href="/dashboard/training-management-system/public/normalmanualbook" class="text-decoration-none text-dark">Manualbook</a>
                     </li>
 
                     <li class="px-3 py-2 hover-bg-gray">
@@ -51,13 +43,6 @@
         <main class="flex-grow-1 p-4">
             <header class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="h4 fw-semibold">@yield('title', 'Dashboard')</h2>
-
-                {{-- <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-secondary">
-                        Logout
-                    </button>
-                </form> --}}
 
             </header>
             @yield('content')
