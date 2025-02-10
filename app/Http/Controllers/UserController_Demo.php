@@ -11,41 +11,22 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Company;
 
-
-class UserController extends Controller
+class UserController_Demo extends Controller
 {
-
-
     public function index()
     {
-        // $dd($request->all());
         $users = User::orderBy('id','desc')->paginate(10);
-        // $users = User::with('company')->get();
         return view('users.index', compact('users'));
     }
 
-    /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
     public function create()
     {
         $companies = Company::all();
-
         return view('users.create', compact('companies'));
     }
 
-    /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
     public function store(Request $request)
     {
-        // dd($request->all());
-
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -60,8 +41,7 @@ class UserController extends Controller
 
         $imagePath = $request->file('image')->store('users', 'public');
 
-        User::create
-        ([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -69,54 +49,31 @@ class UserController extends Controller
             'company' => $request->company,
             'role' => $request->role,
             'DOB' => $request->DOB,
-            'password' => bcrypt($request->password), // hashing
+            'password' => bcrypt($request->password),
             'image' => $imagePath,
         ]);
 
         return redirect()->route('users.index')->with('success','User has been created successfully.');
     }
 
-    /**
-    * Display the specified resource.
-    *
-    * @param  \App\User  $user
-    * @return \Illuminate\Http\Response
-    */
     public function show(User $user)
     {
         return view('users.show',compact('user'));
     }
 
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  \App\Models\User $user
-    * @return \Illuminate\Http\Response
-    */
     public function edit(User $user)
     {
-
         $companies = Company::all();
-
         return view('users.edit',compact('user', 'companies'));
     }
 
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  \App\Models\User  $user
-    * @return \Illuminate\Http\Response
-    */
     public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            // 'email' => ['required'|'email'|Rule::unique('email')->ignore($user->id)],
-            'username' => 'required|unique:users,username,' . $user->id,
-            // 'username' => ['required','email',Rule::unique('username')->ignore($user->id)],
             'phone' => 'required',
+            'username' => 'required|unique:users,username,' . $user->id,
             'company' => 'required',
             'role' => 'required',
             'DOB' => 'required',
@@ -137,25 +94,15 @@ class UserController extends Controller
             $user->image = $imagePath;
         }
 
-
         $user->save();
-        // $dd($request->all());
 
         return redirect()->route('users.index')->with('success','User Has Been updated successfully');
     }
 
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  \App\Models\User $user
-    * @return \Illuminate\Http\Response
-    */
     public function destroy(User $user)
     {
         Storage::disk('public')->delete($user->image);
         $user->delete();
         return redirect()->route('users.index')->with('success','User has been deleted successfully');
     }
-
-
 }

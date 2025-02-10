@@ -49,4 +49,9 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 };

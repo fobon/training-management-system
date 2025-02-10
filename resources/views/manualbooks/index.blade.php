@@ -2,14 +2,14 @@
 
 @extends('layouts.app')
 
-@section('title', '')
+@section('title', 'Manualbook Index')
 
 @section('content')
 
     <div class="container mt-2">
-        <div class="row">
+        {{-- <div class="row">
             <h2>Manualbook Index</h2>
-        </div><br>
+        </div><br> --}}
 
 
         <div class="pull-right mb-2">

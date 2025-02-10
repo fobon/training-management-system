@@ -14,4 +14,9 @@ class Company extends Model
         'code',
         'address',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
 }

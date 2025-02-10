@@ -22,7 +22,7 @@
             </div>
 
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('users.index') }}" enctype="multipart/form-data">Back</a>
+                <a class="btn btn-primary" href="{{ route('users.index') }}">Back</a>
             </div>
 
         </div>
@@ -48,7 +48,7 @@
                 {{-- Name --}}
                 <div class="mb-3">
                     <div class="form-group">
-                        <strong>Name:</strong>
+                        <strong>Name (Not required to change):</strong>
                         <input type="text" name="name" value="{{ $user->name }}" class="form-control" placeholder="Name">
 
                         @error('name')
@@ -60,7 +60,7 @@
                 {{-- Email --}}
                 <div class="mb-3">
                     <div class="form-group">
-                        <strong>Email:</strong>
+                        <strong>Email (Not required to change):</strong>
                         <input type="email" name="email" class="form-control" placeholder="Email" value="{{ $user->email }}">
                         @error('email')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
@@ -71,7 +71,7 @@
                 {{-- Username --}}
                 <div class="mb-3">
                     <div class="form-group">
-                        <strong>Username:</strong>
+                        <strong>Username (Not required to change):</strong>
                         <input type="text" name="username" value="{{ $user->username }}" class="form-control" placeholder="Username" >
                         @error('username')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
@@ -82,7 +82,7 @@
                 {{-- Password --}}
                 <div class="mb-3">
                     <div class="form-group">
-                        <strong>Password:</strong>
+                        <strong>Password (Not required to change):</strong>
                         <input type="password" name="password" class="form-control" placeholder="New Password">
                         @error('password')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -113,13 +113,20 @@
                 </div>
 
                 {{-- Company --}}
-                <div class="mb-3">
+                <div mb=3>
                     <div class="form-group">
                         <strong>Company:</strong>
-                        <input type="text" name="company" value="{{ $user->company }}" class="form-control" placeholder="Company" >
+                        <select name="company" class="form-control" required>
+                            <option value="">Pick the company from below</option>
+                            @foreach($companies as $company)
+                                <option value="{{  $company->name }}" {{  $user->company == $company->name ? 'selected' : '' }}>{{  $company->name  }}</option>
+                            @endforeach
+                        </select>
+
                         @error('company')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                            <div class="alert alert-danger mt-1 mb-1">{{  $message  }}</div>
                         @enderror
+
                     </div>
                 </div>
 
@@ -127,9 +134,22 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <strong>Role:</strong>
-                        <input type="text" name="role" value="{{ $user->role }}" class="form-control" placeholder="Role">
+                        <br>
+
+                        {{-- Normal User --}}
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="roleNormal" value="Normal user" {{ $user->role == 'Normal user' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="roleNormal">Normal User</label>
+                        </div>
+
+                        {{-- Admin --}}
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="Admin" value="Admin" {{ $user->role == 'Admin' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="Admin">Admin</label>
+                        </div>
+
                         @error('role')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}></div>
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>

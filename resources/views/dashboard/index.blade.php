@@ -117,9 +117,9 @@
 </style>
 
 <body >
-    <h1 >
+    {{-- <h1 >
         Latest Banners
-    </h1>
+    </h1> --}}
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -191,24 +191,8 @@
 </body>
 
 
-<div class="table p-2">
+{{-- <div class="table p-2"> --}}
     {{-- <h1 class="text-2xl font-bold mb-4">Dashboard</h1> --}}
-
-    <!-- Summary Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Banners</h2>
-            <p class="text-3xl">{{ $totalBanners }}</p>
-        </div>
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Users</h2>
-            <p class="text-3xl">{{ $totalUsers }}</p>
-        </div>
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Companies</h2>
-            <p class="text-3xl">{{ $totalCompanies }}</p>
-        </div>
-    </div>
 
     <!-- Latest Banners -->
     <div class="bg-white shadow-md p-4 rounded-lg mb-6">
@@ -225,6 +209,30 @@
         </ul>
     </div>
 
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white shadow-md p-4 rounded-lg">
+            <h2 class="text-lg font-semibold">Total Banners</h2>
+            <p class="text-3xl">{{ $totalBanners }}</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white shadow-md p-4 rounded-lg">
+            <h2 class="text-lg font-semibold">Total Users</h2>
+            <p class="text-3xl">{{ $totalUsers }}</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white shadow-md p-4 rounded-lg">
+            <h2 class="text-lg font-semibold">Total Companies</h2>
+            <p class="text-3xl">{{ $totalCompanies }}</p>
+        </div>
+    </div>
+
+
+
     <!-- Upcoming Birthdays -->
     <div class="bg-white shadow-md p-4 rounded-lg">
         <h2 class="text-xl font-semibold mb-3">Upcoming Birthdays</h2>
@@ -238,5 +246,7 @@
             @endforelse
         </ul>
     </div>
+
+{{-- </div> --}}
 
 @endsection

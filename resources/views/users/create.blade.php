@@ -113,44 +113,29 @@
 
                 {{-- Company --}}
                 <div class="mb-3">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <strong>Company:</strong>
                         <input type="text" name="company" class="form-control" placeholder="Company">
                         @error('company')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
-                    </div>
-                    {{-- <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="companyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Company
-                        </button>
+                    </div> --}}
 
-
-                        <ul class="dropdown-menu" aria-labelledby="companyDropdown">
+                    <div class="form-group">
+                        <strong>Company:</strong>
+                        <select name="company" class="form-control" required>
+                            <option value="">Select a Company</option>
                             @foreach($companies as $company)
-                                <li><a class="dropdown-item" href="#" data-value="{{$company->companycode}}">{{  $company->name  }}</a></li>
+                                <option value="{{  $company->name  }}">{{  $company->name  }}</option>
                             @endforeach
-                        </ul>
+                        </select>
+
+                        @error('company')
+                            <div class="alert alert-danger mt-1 mb-1">{{  $message  }}</div>
+                        @enderror
+
                     </div>
 
-                    <input type="hidden" name="company" id="selectedCompany" value="">
-                    <input type="hidden" name="company_code" id="selectedCompanyCode" value="">
-                    @error('company')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                    @enderror
-
-                    <script>
-                        document.querySelectorAll('.dropdown-item').forEach(item =>{
-                            item.addEventListener('click', function())
-                            {
-                                const value = this.getAttribute('data-value');
-                                const text = this.innerText;
-                                document.getElementById('selectedCompany').value = value;
-                                document.querySelector('.dropdown-toggle').innerText = text;
-                                document.getElementById('selectedCompanyCode').value = value;
-                            }
-                        });
-                    </script> --}}
                 </div>
 
                 {{-- Role --}}

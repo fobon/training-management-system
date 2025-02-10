@@ -35,9 +35,9 @@
     }
 </style>
 
-<div class="container">
+{{-- <div class="container">
     <h1>Banner Index</h1>
-    <a href="{{ route('banners.create') }}" class="btn btn-primary mb-3">Add Banner</a>
+    <a href="{{ route('banners.create') }}" class="btn btn-primary mb-3">Add Banner</a> --}}
 
     <table class="table table-bordered">
         <thead>
