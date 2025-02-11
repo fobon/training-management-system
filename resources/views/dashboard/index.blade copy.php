@@ -8,9 +8,10 @@
     {
         position: relative;
         max-width: 1000px;
-        max-height: 700px; /* Set fixed height */
+        max-height: 700px;
         margin: auto;
         overflow: hidden;
+        border: red;
     }
 
     /* .mySlides
@@ -24,7 +25,7 @@
     {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Ensures the image fills the container */
+        object-fit: cover;
     }
 
     .mySlides.show
@@ -61,7 +62,7 @@
     }
 
     .text {
-        color: #f2f2f2;
+        color: #ffffff;
         font-size: 15px;
         padding: 8px 12px;
         position: absolute;
@@ -107,12 +108,18 @@
         to {opacity: 1}
     }
 
+    .index
+    {
+        position: absolute;
+
+    }
+
 </style>
 
-<body class="index">
-    <h1>
+<body >
+    {{-- <h1 >
         Latest Banners
-    </h1>
+    </h1> --}}
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -132,7 +139,7 @@
     <br>
 
     <!-- The dots/circles -->
-    <div style="text-align:center">
+    <div style="text-align: center">
         @foreach ($latestBanners as $index => $banner)
             <span class="dot" onclick="currentSlide({{ $index + 1 }})"></span>
         @endforeach
@@ -184,27 +191,11 @@
 </body>
 
 
-<div class="p-6">
+{{-- <div class="table p-2"> --}}
     {{-- <h1 class="text-2xl font-bold mb-4">Dashboard</h1> --}}
 
-    <!-- Summary Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Banners</h2>
-            <p class="text-3xl">{{ $totalBanners }}</p>
-        </div>
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Users</h2>
-            <p class="text-3xl">{{ $totalUsers }}</p>
-        </div>
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Companies</h2>
-            <p class="text-3xl">{{ $totalCompanies }}</p>
-        </div>
-    </div>
-
     <!-- Latest Banners -->
-    {{-- <div class="bg-white shadow-md p-4 rounded-lg mb-6">
+    <div class="bg-white shadow-md p-4 rounded-lg mb-6">
         <h2 class="text-xl font-semibold mb-3">Latest Banners</h2>
         <ul>
             @foreach ($latestBanners as $banner)
@@ -216,7 +207,31 @@
                 </li>
             @endforeach
         </ul>
-    </div> --}}
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white shadow-md p-4 rounded-lg">
+            <h2 class="text-lg font-semibold">Total Banners</h2>
+            <p class="text-3xl">{{ $totalBanners }}</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white shadow-md p-4 rounded-lg">
+            <h2 class="text-lg font-semibold">Total Users</h2>
+            <p class="text-3xl">{{ $totalUsers }}</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white shadow-md p-4 rounded-lg">
+            <h2 class="text-lg font-semibold">Total Companies</h2>
+            <p class="text-3xl">{{ $totalCompanies }}</p>
+        </div>
+    </div>
+
+
 
     <!-- Upcoming Birthdays -->
     <div class="bg-white shadow-md p-4 rounded-lg">
@@ -224,12 +239,14 @@
         <ul>
             @forelse ($upcomingBirthdays as $user)
                 <li class="py-2 border-b">
-                    {{ $user->name }} - {{ \Carbon\Carbon::parse($user->date_of_birth)->format('F d') }}
+                    {{ $user->name }} <br>Birthday on {{ \Carbon\Carbon::parse($user->DOB)->format('F d') }}
                 </li>
             @empty
                 <li>No upcoming birthdays.</li>
             @endforelse
         </ul>
     </div>
+
+{{-- </div> --}}
 
 @endsection

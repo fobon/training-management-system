@@ -12,6 +12,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ManualbookController;
 use App\Http\Controllers\RickAndMortyController;
+use App\Http\Controllers\ProfileController;
 
 // Redirect to login
 Route::get('/', function () {
@@ -27,6 +28,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function() {
 Route::get('/home', function() { return view('/home'); })->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
 
 // Banner routes

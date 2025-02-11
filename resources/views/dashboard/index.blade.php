@@ -114,6 +114,12 @@
 
     }
 
+    /* .card
+    {
+        width : 200px;
+        height : 120px;
+    } */
+
 </style>
 
 <body >
@@ -121,10 +127,8 @@
         Latest Banners
     </h1> --}}
 
-    <!-- Slideshow container -->
     <div class="slideshow-container">
         @foreach ($latestBanners as $index => $banner)
-            <!-- Full-width images with number and caption text -->
             <div class="mySlides fade">
                 <div class="numbertext">{{ $index + 1 }} / {{ count($latestBanners) }}</div>
                 <img src="{{ asset('storage/' . $banner->image) }}" style="width:100%">
@@ -132,13 +136,11 @@
             </div>
         @endforeach
 
-        <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <br>
 
-    <!-- The dots/circles -->
     <div style="text-align: center">
         @foreach ($latestBanners as $index => $banner)
             <span class="dot" onclick="currentSlide({{ $index + 1 }})"></span>
@@ -150,12 +152,10 @@
         let slideIndex = 1;
         showSlides(slideIndex);
 
-        // Next/previous controls
         function plusSlides(n) {
             showSlides(slideIndex += n);
         }
 
-        // Thumbnail image controls
         function currentSlide(n) {
             showSlides(slideIndex = n);
         }
@@ -191,50 +191,125 @@
 </body>
 
 
-{{-- <div class="table p-2"> --}}
-    {{-- <h1 class="text-2xl font-bold mb-4">Dashboard</h1> --}}
+<div class="table p-2">
 
-    <!-- Latest Banners -->
-    <div class="bg-white shadow-md p-4 rounded-lg mb-6">
-        <h2 class="text-xl font-semibold mb-3">Latest Banners</h2>
-        <ul>
-            @foreach ($latestBanners as $banner)
-                <li class="flex justify-between items-center py-2 border-b">
-                    <div>
-                        <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->image }}"></a>
-                        <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
-                    </div>
-                </li>
-            @endforeach
-        </ul>
+    <div class="card-container d-flex">
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Upcoming Birthdays</h5>
+                <ul class="list-disc pl-5">
+                    @forelse ($upcomingBirthdays as $user)
+                        <li class="py-2">
+                            {{ $user->name }} <br>Birthday on {{ \Carbon\Carbon::parse($user->DOB)->format('F d') }}
+                        </li>
+                    @empty
+                        <li>No upcoming birthdays.</li>
+                    @endforelse
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Total Banners</h5>
+                <p class="card-text text-4xl">{{ $totalBanners }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Total Companies</h5>
+                <p class="card-text text-4xl">{{ $totalCompanies }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Total Users</h5>
+                <p class="card-text text-4xl">{{ $totalUsers }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Latest Banners</h5>
+                @foreach ($latestBanners as $banner)
+                    {{-- <li class="flex justify-between items-center py-2 border-b"> --}}
+                        <div>
+                            <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->image }}"></a>
+                            <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
+                            <br>
+                        </div>
+                    {{-- </li> --}}
+                    <br>
+                @endforeach
+            </div>
+        </div>
+
+
+
     </div>
 
-    <!-- Summary Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <style>
+        .card-container
+        {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card-title, .card-text
+        {
+            text-align: center;
+        }
+
+        .card
+        {
+            /* flex: 1; */
+            width: 250px;
+            height: 120px;
+        }
+
+
+    </style>
+
+    {{-- <div class="shadow-md p-4 rounded-lg mb-6">
+            <h2 class="text-xl font-semibold mb-3">Latest Banners</h2>
+            <ul class="shadow-md p-4 rounded-lg mb-6">
+                @foreach ($latestBanners as $banner)
+                    <li class="flex justify-between items-center py-2 border-b">
+                        <div>
+                            <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->image }}"></a>
+                            <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div> --}}
+
+    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div class="bg-white shadow-md p-4 rounded-lg">
             <h2 class="text-lg font-semibold">Total Banners</h2>
             <p class="text-3xl">{{ $totalBanners }}</p>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div class="bg-white shadow-md p-4 rounded-lg">
             <h2 class="text-lg font-semibold">Total Users</h2>
             <p class="text-3xl">{{ $totalUsers }}</p>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div class="bg-white shadow-md p-4 rounded-lg">
             <h2 class="text-lg font-semibold">Total Companies</h2>
             <p class="text-3xl">{{ $totalCompanies }}</p>
         </div>
-    </div>
+    </div> --}}
 
-
-
-    <!-- Upcoming Birthdays -->
-    <div class="bg-white shadow-md p-4 rounded-lg">
+    {{-- <div class="bg-white shadow-md p-4 rounded-lg">
         <h2 class="text-xl font-semibold mb-3">Upcoming Birthdays</h2>
         <ul>
             @forelse ($upcomingBirthdays as $user)
@@ -245,8 +320,8 @@
                 <li>No upcoming birthdays.</li>
             @endforelse
         </ul>
-    </div>
+    </div> --}}
 
-{{-- </div> --}}
+</div>
 
 @endsection

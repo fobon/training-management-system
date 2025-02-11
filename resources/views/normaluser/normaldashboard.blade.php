@@ -4,100 +4,131 @@
 
 @section('content')
 <style>
-     .slideshow-container {
-            position: relative;
-            max-width: 1000px;
-            margin: auto;
-        }
+    .slideshow-container
+    {
+        position: relative;
+        max-width: 1000px;
+        max-height: 700px;
+        margin: auto;
+        overflow: hidden;
+        border: red;
+    }
 
-        .mySlides {
-            display: none;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
+    /* .mySlides
+    {
+        display: none;
+        opacity: 0;
+        transition: opacity 1s ease;
+    } */
 
-        .mySlides.show{
-            display: block;
-            opacity: 1;
-        }
+    .mySlides img
+    {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            margin-top: -22px;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
+    .mySlides.show
+    {
+        display: block;
+        opacity: 1;
+    }
 
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
+    .prev, .next
+    {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
 
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+    .next
+    {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
 
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
-        }
+    .prev:hover, .next:hover
+    {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 
-        .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-        }
+    .text {
+        color: #ffffff;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
 
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
 
-        .active, .dot:hover {
-            background-color: #717171;
-        }
+    .dot
+    {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
 
-        .fade {
-            animation-name: fade;
-            animation-duration: 99999999999s;
-        }
+    .active, .dot:hover
+    {
+        background-color: #717171;
+    }
 
-        @keyframes fade {
-            from {opacity: 1}
-            to {opacity: 1}
-        }
+    .fade
+    {
+        animation-name: fade;
+        animation-duration: 99999999999s;
+    }
+
+    @keyframes fade
+    {
+        from {opacity: 1}
+        to {opacity: 1}
+    }
+
+    .index
+    {
+        position: absolute;
+
+    }
+
+    /* .card
+    {
+        width : 200px;
+        height : 120px;
+    } */
+
 </style>
 
-<body class="index">
-    <h1>
+<body >
+    {{-- <h1 >
         Latest Banners
-    </h1>
+    </h1> --}}
 
-    <!-- Slideshow container -->
     <div class="slideshow-container">
         @foreach ($latestBanners as $index => $banner)
-            <!-- Full-width images with number and caption text -->
             <div class="mySlides fade">
                 <div class="numbertext">{{ $index + 1 }} / {{ count($latestBanners) }}</div>
                 <img src="{{ asset('storage/' . $banner->image) }}" style="width:100%">
@@ -105,14 +136,12 @@
             </div>
         @endforeach
 
-        <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <br>
 
-    <!-- The dots/circles -->
-    <div style="text-align:center">
+    <div style="text-align: center">
         @foreach ($latestBanners as $index => $banner)
             <span class="dot" onclick="currentSlide({{ $index + 1 }})"></span>
         @endforeach
@@ -123,12 +152,10 @@
         let slideIndex = 1;
         showSlides(slideIndex);
 
-        // Next/previous controls
         function plusSlides(n) {
             showSlides(slideIndex += n);
         }
 
-        // Thumbnail image controls
         function currentSlide(n) {
             showSlides(slideIndex = n);
         }
@@ -164,52 +191,137 @@
 </body>
 
 
-<div class="p-6">
-    {{-- <h1 class="text-2xl font-bold mb-4">Dashboard</h1> --}}
+<div class="table p-2">
 
-    <!-- Summary Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="card-container d-flex">
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Upcoming Birthdays</h5>
+                <ul class="list-disc pl-5">
+                    @forelse ($upcomingBirthdays as $user)
+                        <li class="py-2">
+                            {{ $user->name }} <br>Birthday on {{ \Carbon\Carbon::parse($user->DOB)->format('F d') }}
+                        </li>
+                    @empty
+                        <li>No upcoming birthdays.</li>
+                    @endforelse
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Total Banners</h5>
+                <p class="card-text text-4xl">{{ $totalBanners }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Total Companies</h5>
+                <p class="card-text text-4xl">{{ $totalCompanies }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Total Users</h5>
+                <p class="card-text text-4xl">{{ $totalUsers }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Latest Banners</h5>
+                @foreach ($latestBanners as $banner)
+                    {{-- <li class="flex justify-between items-center py-2 border-b"> --}}
+                        <div>
+                            <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->image }}"></a>
+                            <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
+                            <br>
+                        </div>
+                    {{-- </li> --}}
+                    <br>
+                @endforeach
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <style>
+        .card-container
+        {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card-title, .card-text
+        {
+            text-align: center;
+        }
+
+        .card
+        {
+            /* flex: 1; */
+            width: 250px;
+            height: 120px;
+        }
+
+
+    </style>
+
+    {{-- <div class="shadow-md p-4 rounded-lg mb-6">
+            <h2 class="text-xl font-semibold mb-3">Latest Banners</h2>
+            <ul class="shadow-md p-4 rounded-lg mb-6">
+                @foreach ($latestBanners as $banner)
+                    <li class="flex justify-between items-center py-2 border-b">
+                        <div>
+                            <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->image }}"></a>
+                            <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div> --}}
+
+    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div class="bg-white shadow-md p-4 rounded-lg">
             <h2 class="text-lg font-semibold">Total Banners</h2>
             <p class="text-3xl">{{ $totalBanners }}</p>
         </div>
+    </div> --}}
+
+    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div class="bg-white shadow-md p-4 rounded-lg">
             <h2 class="text-lg font-semibold">Total Users</h2>
             <p class="text-3xl">{{ $totalUsers }}</p>
         </div>
+    </div> --}}
+
+    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div class="bg-white shadow-md p-4 rounded-lg">
             <h2 class="text-lg font-semibold">Total Companies</h2>
             <p class="text-3xl">{{ $totalCompanies }}</p>
         </div>
-    </div>
-
-    <!-- Latest Banners -->
-    {{-- <div class="bg-white shadow-md p-4 rounded-lg mb-6">
-        <h2 class="text-xl font-semibold mb-3">Latest Banners</h2>
-        <ul>
-            @foreach ($latestBanners as $banner)
-                <li class="flex justify-between items-center py-2 border-b">
-                    <div>
-                        <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->image }}"></a>
-                        <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
-                    </div>
-                </li>
-            @endforeach
-        </ul>
     </div> --}}
 
-    <!-- Upcoming Birthdays -->
-    <div class="bg-white shadow-md p-4 rounded-lg">
+    {{-- <div class="bg-white shadow-md p-4 rounded-lg">
         <h2 class="text-xl font-semibold mb-3">Upcoming Birthdays</h2>
         <ul>
             @forelse ($upcomingBirthdays as $user)
                 <li class="py-2 border-b">
-                    {{ $user->name }} - {{ \Carbon\Carbon::parse($user->date_of_birth)->format('F d') }}
+                    {{ $user->name }} <br>Birthday on {{ \Carbon\Carbon::parse($user->DOB)->format('F d') }}
                 </li>
             @empty
                 <li>No upcoming birthdays.</li>
             @endforelse
         </ul>
-    </div>
+    </div> --}}
+
+</div>
 
 @endsection
