@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NormalhomeController;
 use App\Http\Controllers\NormaldashboardController;
 use App\Http\Controllers\NormalmanualbookController;
+use App\Http\Controllers\NormalprofileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BannerController;
@@ -67,6 +68,7 @@ Route::middleware(['auth', 'normal.user'])->group(function () {
 Route::get('/normalhome', [NormalhomeController::class, 'index'])->name('normalhome');
 Route::get('/normaldashboard', [NormaldashboardController::class, 'index'])->name('normaldashboard');
 Route::get('/normalmanualbook', [NormalmanualbookController::class, 'index'])->name('normalmanualbook');
+Route::get('/normalprofile', [NormalprofileController::class, 'index'])->name('normalprofile');
 });
 
 // Resource routes for users

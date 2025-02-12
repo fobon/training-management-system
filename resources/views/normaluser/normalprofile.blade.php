@@ -1,6 +1,6 @@
 {{-- Requires:  --}}
 
-@extends('layouts.app')
+@extends('layouts.normalapp')
 
 @section('title', 'Profile Page')
 
@@ -22,7 +22,7 @@
             margin-bottom: 10%;
             display:block;
             width: 300px;
-            height: 300px;
+            height:300px;
             object-fit: cover;
             margin-bottom: 40px;
         }

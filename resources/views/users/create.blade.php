@@ -113,13 +113,6 @@
 
                 {{-- Company --}}
                 <div class="mb-3">
-                    {{-- <div class="form-group">
-                        <strong>Company:</strong>
-                        <input type="text" name="company" class="form-control" placeholder="Company">
-                        @error('company')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
-                    </div> --}}
 
                     <div class="form-group">
                         <strong>Company:</strong>

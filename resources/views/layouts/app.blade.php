@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/content.css') }}">
 
+    <style>
+        body{
+            /* font-family: 'Roboto', sans-serif; */
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #060606;
+        }
+    </style>
 </head>
 <body>
     <div class="d-flex min-vh-100">

@@ -59,7 +59,6 @@
             <div class="mb-3">
                 <label for="address" class="form-label">Company Address</label>
                 <input type="text" name="address" class="form-control" id="address" aria-describedby="address" placeholder="Company Address">
-                {{-- <div id="companyAddress" class="form-text">Double check if your address is right</div> --}}
               </div>
 
             <button type="submit" class="btn btn-primary">Update</button>

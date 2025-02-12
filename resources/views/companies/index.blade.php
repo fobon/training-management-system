@@ -37,9 +37,6 @@
 
 <div class="container mt-2">
     <div class="row">
-        {{-- <div class="col-lg-12 margin-tb">
-            <h2>Company Index</h2>
-        </div> --}}
 
         <div class="pull-right mb-2">
             <a class="btn btn-primary" href="{{ route('companies.create') }}">Add Company</a>

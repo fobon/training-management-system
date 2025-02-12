@@ -56,7 +56,6 @@
             <div class="mb-3">
                 <label for="detail" class="form-label">Manualbook Description</label>
                 <input type="text" name="detail" class="form-control" id="detail" aria-describedby="detail" placeholder="Description" value="{{ old('detail', $manualbook->detail)  }}">
-                {{-- <div id="companyAddress" class="form-text">Double check if your address is right</div> --}}
               </div>
 
             <button type="submit" class="btn btn-primary">Update</button>

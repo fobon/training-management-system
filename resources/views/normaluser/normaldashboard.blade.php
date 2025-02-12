@@ -14,13 +14,6 @@
         border: red;
     }
 
-    /* .mySlides
-    {
-        display: none;
-        opacity: 0;
-        transition: opacity 1s ease;
-    } */
-
     .mySlides img
     {
         width: 100%;
@@ -114,18 +107,9 @@
 
     }
 
-    /* .card
-    {
-        width : 200px;
-        height : 120px;
-    } */
-
 </style>
 
 <body >
-    {{-- <h1 >
-        Latest Banners
-    </h1> --}}
 
     <div class="slideshow-container">
         @foreach ($latestBanners as $index => $banner)
@@ -273,54 +257,6 @@
 
 
     </style>
-
-    {{-- <div class="shadow-md p-4 rounded-lg mb-6">
-            <h2 class="text-xl font-semibold mb-3">Latest Banners</h2>
-            <ul class="shadow-md p-4 rounded-lg mb-6">
-                @foreach ($latestBanners as $banner)
-                    <li class="flex justify-between items-center py-2 border-b">
-                        <div>
-                            <strong>{{ $banner->name }}</strong> - <a href="{{ $banner->image }}"></a>
-                            <td><img src="{{ asset('storage/' . $banner->image)  }}" width="100"></td>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-        </div> --}}
-
-    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Banners</h2>
-            <p class="text-3xl">{{ $totalBanners }}</p>
-        </div>
-    </div> --}}
-
-    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Users</h2>
-            <p class="text-3xl">{{ $totalUsers }}</p>
-        </div>
-    </div> --}}
-
-    {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white shadow-md p-4 rounded-lg">
-            <h2 class="text-lg font-semibold">Total Companies</h2>
-            <p class="text-3xl">{{ $totalCompanies }}</p>
-        </div>
-    </div> --}}
-
-    {{-- <div class="bg-white shadow-md p-4 rounded-lg">
-        <h2 class="text-xl font-semibold mb-3">Upcoming Birthdays</h2>
-        <ul>
-            @forelse ($upcomingBirthdays as $user)
-                <li class="py-2 border-b">
-                    {{ $user->name }} <br>Birthday on {{ \Carbon\Carbon::parse($user->DOB)->format('F d') }}
-                </li>
-            @empty
-                <li>No upcoming birthdays.</li>
-            @endforelse
-        </ul>
-    </div> --}}
 
 </div>
 

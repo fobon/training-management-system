@@ -8,15 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class ProfileController extends Controller
+class NormalprofileController extends Controller
 {
     public function index () {
-        $user = Auth::user();
-
-        return view('profile' , compact('user'));
-    }
-
-    public function normalProfile () {
         $user = Auth::user();
 
         return view('normaluser.normalprofile' , compact('user'));

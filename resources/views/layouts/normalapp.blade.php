@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/content.css') }}">
 
+    <style>
+        body{
+            /* font-family: 'Roboto', sans-serif; */
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #060606;
+        }
+    </style>
 </head>
 <body>
     <div class="d-flex min-vh-100">
@@ -21,6 +28,7 @@
                     <li><a href="{{ url('/normalhome') }}" class="sidebar-link text-white">Home</a></li>
                     <li><a href="{{ url('/normaldashboard') }}" class="sidebar-link text-white" >Dashboard</a></li>
                     <li><a href="{{ route('normalmanualbook') }}" class="sidebar-link text-white">Manual Book</a></li>
+                    <li><a href="{{ route('normalprofile')  }}" class="sidebar-link text-white">Profile</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
