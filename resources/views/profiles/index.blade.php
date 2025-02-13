@@ -1,6 +1,6 @@
 {{-- Requires:  --}}
 
-@extends('layouts.app')
+@extends('layouts.' . $user->role)
 
 @section('title', 'Profile Page')
 
@@ -59,6 +59,10 @@
             /* margin-top:5%; */
         }
 
+        .btn btn-light{
+            margin-left: 90%;
+        }
+
     </style>
 
     <p>This is the profile page</p><br>
@@ -67,6 +71,8 @@
 
 
     <div class="profile-data-background">
+
+        <a class="btn btn-light" href="{{  route('profiles.edit', $user->id)  }}">Edit Profile</a>
         <img class="rounded-circle" src="{{  asset('storage/' . $user->image)  }}" width="100" alt="Profile Picture">
         {{-- <div class="profile-picture-text">{{  $user->name  }}<br></div> --}}
         <div class="profile-data"><strong>Name : </strong> {{  $user->name   }}</div>

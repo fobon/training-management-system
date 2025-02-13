@@ -1,6 +1,6 @@
 {{-- Manualbook Index --}}
 
-@extends('layouts.normalapp')
+@extends('layouts.' . $user->role)
 
 @section('title', '')
 

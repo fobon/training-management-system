@@ -40,7 +40,7 @@
 
                 {{-- User Image --}}
                 <div class="mb-3">
-                    <label for="image" class="form-label">Banner Image(Max 10MB - Leave empty if no changes)</label>
+                    <label for="image" class="form-label">User Image(Max 10MB - Leave empty if no changes)</label>
                     <input type="file" name="image" id="image" class="form-control">
                 </div>
 

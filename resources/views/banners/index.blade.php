@@ -1,6 +1,6 @@
 {{-- BANNER INDEX --}}
 
-@extends('layouts.app')
+@extends('layouts.Admin')
 
 @section('title', 'Banner Index')
 

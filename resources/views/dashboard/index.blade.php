@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.Admin')
+{{-- @extends('layouts.' . $user->role) --}}
 
 @section('title', 'Dashboard')
 

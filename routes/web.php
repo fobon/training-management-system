@@ -27,9 +27,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Home and dashboard route
 Route::middleware(['auth'])->group(function() {
-Route::get('/home', function() { return view('/home'); })->name('home');
+// Route::get('/home', function() { return view('/home'); })->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
 
 // Banner routes
@@ -63,9 +63,17 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/manualbooks/{manualbook}', [ManualbookController::class, 'destroy'])->name('manualbooks.destroy');
 });
 
+// Profile routes
+Route::middleware(['auth'])->group(function(){
+    Route::get('/profiles', [ProfileController::class, 'index'])->name('profiles.index');
+    Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit'])->name('profiles.edit');
+    Route::put('/profiles/{profile}', [ProfileController::class, 'update'])->name('profiles.update');
+});
+
 // Route::get('/normalhome', function() { return view('/normalhome'); })->name('normalhome');
 Route::middleware(['auth', 'normal.user'])->group(function () {
-Route::get('/normalhome', [NormalhomeController::class, 'index'])->name('normalhome');
+// Route::get('/normalhome', [NormalhomeController::class, 'index'])->name('normalhome');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/normaldashboard', [NormaldashboardController::class, 'index'])->name('normaldashboard');
 Route::get('/normalmanualbook', [NormalmanualbookController::class, 'index'])->name('normalmanualbook');
 Route::get('/normalprofile', [NormalprofileController::class, 'index'])->name('normalprofile');

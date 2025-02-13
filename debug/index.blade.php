@@ -1,6 +1,6 @@
 {{-- Companies Index --}}
 
-@extends('layouts.app')
+@extends('layouts.' . $user->role)')
 
 @section('title', 'Manualbook Index')
 

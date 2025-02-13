@@ -1,6 +1,6 @@
 {{-- Manualbook Index --}}
 
-@extends('layouts.normalapp')
+@extends('layouts.Normal user')
 
 @section('title', '')
 

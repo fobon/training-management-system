@@ -1,6 +1,6 @@
 {{-- Manualbook Index --}}
 
-@extends('layouts.app')
+@extends('layouts.Admin')
 
 @section('title', 'Manualbook Index')
 

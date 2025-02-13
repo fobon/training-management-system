@@ -6,12 +6,14 @@ use App\Models\Banner;
 use App\Models\User;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
         $latestBanners = Banner::latest()->take(3)->get();
         $totalBanners = Banner::count();
         $totalUsers = User::count();
@@ -30,11 +32,12 @@ class DashboardController extends Controller
             })
             ->sortBy('DOB');
 
-        return view('dashboard.index', compact('latestBanners', 'totalBanners', 'totalUsers', 'totalCompanies', 'upcomingBirthdays'));
+        return view('dashboard.index', compact('latestBanners', 'totalBanners', 'totalUsers', 'totalCompanies', 'upcomingBirthdays', 'user'));
     }
 
     public function normalDashboard()
     {
+        $user = Auth::user();
         $latestBanners = Banner::latest()->take(3)->get();
         $totalBanners = Banner::count();
         $totalUsers = User::count();
@@ -53,7 +56,7 @@ class DashboardController extends Controller
             })
             ->sortBy('DOB');
 
-        return view('normaluser.normaldashboard', compact('latestBanners', 'totalBanners', 'totalUsers', 'totalCompanies', 'upcomingBirthdays'));
+        return view('normaluser.normaldashboard', compact('latestBanners', 'totalBanners', 'totalUsers', 'totalCompanies', 'upcomingBirthdays', 'user'));
     }
 
     public function deleteBanner($id) {

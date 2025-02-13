@@ -1,6 +1,6 @@
-{{-- Requires:  --}}
+{{-- UNUSED  --}}
 
-@extends('layouts.normalapp')
+@extends('layouts.' . $user->role)
 
 @section('title', 'Profile Page')
 

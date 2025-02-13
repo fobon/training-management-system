@@ -25,10 +25,10 @@
             </div>
             <nav class="mt-3">
                 <ul class="list-unstyled">
-                    <li><a href="{{ url('/normalhome') }}" class="sidebar-link text-white">Home</a></li>
+                    <li><a href="{{ url('/home') }}" class="sidebar-link text-white">Home</a></li>
                     <li><a href="{{ url('/normaldashboard') }}" class="sidebar-link text-white" >Dashboard</a></li>
                     <li><a href="{{ route('normalmanualbook') }}" class="sidebar-link text-white">Manual Book</a></li>
-                    <li><a href="{{ route('normalprofile')  }}" class="sidebar-link text-white">Profile</a></li>
+                    <li><a href="{{ route('profiles.index')  }}" class="sidebar-link text-white">Profile</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf

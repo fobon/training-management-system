@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.Admin')
 
 @section('title', 'Rick and Morty API')
 

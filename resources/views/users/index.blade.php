@@ -1,6 +1,6 @@
 {{-- USER INDEX --}}
 
-@extends('layouts.app')
+@extends('layouts.Admin')
 
 @section('title', 'User  Index')
 

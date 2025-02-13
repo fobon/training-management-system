@@ -29,7 +29,8 @@ class LoginController extends Controller
             {
                 return redirect()->intended('home');
             } else {
-                return redirect()->intended('normalhome');
+                // return redirect()->intended('normalhome');
+                return redirect()->intended('home');
             }
 
         }

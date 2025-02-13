@@ -32,7 +32,7 @@
                     <li><a href="{{ route('banners.index') }}" class="sidebar-link text-white">Banners</a></li>
                     <li><a href="{{ route('manualbooks.index') }}" class="sidebar-link text-white">Manual Book</a></li>
                     <li><a href="{{ route('rickandmorty')  }}" class="sidebar-link text-white">Click on me :)</a></li>
-                    <li><a href="{{ route('profile')  }}" class="sidebar-link text-white">Profile</a></li>
+                    <li><a href="{{ route('profiles.index')  }}" class="sidebar-link text-white">Profile</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
